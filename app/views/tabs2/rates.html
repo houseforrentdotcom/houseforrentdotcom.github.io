@@ -1,0 +1,28 @@
+<div class="row">
+    <h2>Rates</h2>
+    <label>Currency:&nbsp;</label>
+    <button type="button" class="btn btn-default" ng-model="selectedCurrency" data-html="1"
+            ng-options="currency.name for currency in rates.currencies | orderBy : 'symbol'"
+            data-animation="am-flip-x"
+            bs-select>
+        Action <span class="caret"></span>
+    </button>
+</div>
+<div class="row">
+    <table class="table table-responsive table-hover table-condensed">
+        <thead>
+        <tr>
+            <td>Period</td>
+            <td class="text-center">Cost per week in {{selectedCurrency.name}}</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="period in rates.periods" ng-animate="am-fade" data-animation="am-fade" data-placement="top">
+            <td>{{period.period}}</td>
+            <td class="text-center">{{period.rate * selectedCurrency.fx}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+</div>
